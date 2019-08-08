@@ -401,21 +401,36 @@ function addTask() {
 function addLoadMore() {
   return `<button class="load-more" type="button">load more</button>`;
 }
-function f() {
-  
+function addBoardContainer() {
+  return `<section class="board container"></section>`;
+}
+function addCardContainer() {
+  return `<div class="board__tasks"></div>`;
+}
+function addBoardFilter() {
+    return `<div class="board__filter-list">
+              <a href="#" class="board__filter">SORT BY DEFAULT</a>
+              <a href="#" class="board__filter">SORT BY DATE up</a>
+              <a href="#" class="board__filter">SORT BY DATE down</a>
+            </div>`;
 }
 function render(container, layout) {
   container.insertAdjacentHTML('beforeend', layout);
 }
 function createCont() {
-  c
+
 }
 const mainMenu = document.querySelector(`.main__control`);
 const mainCont = document.querySelector(`main.main`);
 render(mainMenu, addMenu());
 render(mainCont, addSearch());
 render(mainCont, addFilters());
-render(mainCont, addTaskCard());
-// for (let i = 0; i < 3; i+=){
-//
-// }
+render(mainCont, addBoardContainer());
+const taskBoard = document.querySelector(`.board.container`);
+render(taskBoard, addBoardFilter());
+render(taskBoard, addCardContainer());
+const boardTask = document.querySelector(`.board__tasks`);
+for (let i = 0; i < 3; i++){
+  render(boardTask, addTaskCard());
+}
+render(taskBoard, addLoadMore());
